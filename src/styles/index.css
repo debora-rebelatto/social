@@ -1,0 +1,102 @@
+html body {
+    background-color: #F2F2F3;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    padding: 30px;
+}
+
+input {
+    box-sizing: border-box;
+    height: 38px;
+    background: #FFFFFF;
+    border: 2px solid #CDCDD0;
+    border-radius: 4px;
+}
+
+.purple-button {
+    border: none;
+    background-color: #6045AF; /* Green */
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    height: 38px;
+    border-radius: 4px;
+}
+
+.btn-api {
+    border-radius: 0px 4px 4px 0px;
+}
+
+label {
+    width: 110px;
+    display: inline-block;
+}
+
+.input-api {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.api-key-field {
+    width: 619px;
+    height: 38px;
+    border-radius: 4px 0px 0px 4px;
+    padding: 10px;
+}
+
+.card {
+    background: #FFFFFF;
+    border-radius: 6px;
+    padding: 10px 30px;
+    margin: 30px;
+}
+
+.card-outline {
+    border-color: #6045AF;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 6px;
+    padding: 10px 20px;
+    margin: 20px;
+}
+
+.save-address-button {
+    text-align: right;
+}
+
+.column {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+
+.pagination {
+    border: 2px solid #CDCDD0;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.align-div-center {
+    text-align: center;
+}
+
+.button-pagination {
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    font-size: 16px;
+    height: 38px;
+}
+
+.page-number {
+    width: 50px;
+    display: inherit;
+}
