@@ -40,3 +40,12 @@ export async function login(body: Object) {
       console.log(error);
     })
 }
+
+export async function register(body: Object) {
+  return await axios.post(`${BASE_URL}/users/register`, body)
+    .then((response) => {
+      return response.data;
+    }).catch((error) => {
+      return error.response;
+    })
+}
