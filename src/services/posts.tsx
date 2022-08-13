@@ -22,6 +22,30 @@ export async function fetchPosts() {
   });
 }
 
+export async function fetchPostById(postId: any) {
+  const headers = buildHeader();
+
+  return await axios.get(`${BASE_URL}/posts/${postId}`, { headers })
+    .then((response) => {
+      return response.data;
+    }).catch((error) => {
+      return error;
+    });
+}
+
+export async function updatePost(postId: any, body: any) {
+  const headers = buildHeader();
+
+  return await axios.put(`${BASE_URL}/posts/${postId}`, body, { headers })
+    .then((response) => {
+      return response.data;
+    }).catch((error) => {
+      return error;
+    });
+}
+
+
+
 export async function deletePosts(id: string) {
   const headers = buildHeader();
 

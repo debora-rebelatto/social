@@ -2,10 +2,10 @@
 
 - [x] Registrar usuário
 - [x] Login
-- [ ] Listar postagens
-- [ ] Criar postagens
+- [x] Listar postagens
+- [x] Criar postagens
 - [ ] Editar postagens
-- [ ] Deletar postagens
+- [x] Deletar postagens
 
 ### `npm start`
 

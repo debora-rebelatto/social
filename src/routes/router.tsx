@@ -3,6 +3,7 @@ import CreatePosts from '../pages/CreatePosts';
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import UpdatePost from '../pages/UpdatePost';
 
 export const AppRouter = () => {
   return (
@@ -12,6 +13,9 @@ export const AppRouter = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
         <Route path="/create" element={<CreatePosts />} />
+        <Route path="update" element={<UpdatePost />}>
+          <Route path=":postId" element={<UpdatePost />} />
+        </Route>
         <Route
           path="*"
           element={

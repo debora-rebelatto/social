@@ -36,13 +36,15 @@ const CreatePosts = () => {
       <Navbar/>
       <div className="page-content">
         <h1>Create Post</h1>
-        <textarea
-          className="postInput"
-          placeholder="What are you thinking about?"
-          onChange={(e) => setContent(e.target.value)}
-        />
-        <button onClick={() => { buttonCreatePost(); }}>Create Post</button>
-        { wasPostCreated() }
+        <form onSubmit={buttonCreatePost}>
+          <textarea
+            className="postInput"
+            placeholder="What are you thinking about?"
+            onChange={(e) => setContent(e.target.value)}
+          />
+          <button onClick={() => { buttonCreatePost(); }}>Create Post</button>
+          { wasPostCreated() }
+        </form>
       </div>
     </div>
   );

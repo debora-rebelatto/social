@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { fetchPosts, deletePosts } from "../../services/posts";
 
 const PostsList = () => {
@@ -12,7 +13,6 @@ const PostsList = () => {
   }
 
   const buttonEditPost = async (id: string) => {
-    console.log(id);
     loadData();
   }
 
@@ -49,11 +49,24 @@ const PostsList = () => {
         const canEdit = canEditThisPost(post.user_id);
         return (
           <div className="card" key={post.id}>
-            <p> {localStorage.getItem("user_id") } </p>
-            <p>{ post.user_id} </p>
             <p>{post.content}</p>
-            { canEdit ? <button onClick={() => { buttonEditPost(post.id); }}>Edit</button> : null }
-            { canEdit ? <button onClick={() => { buttonDeletePost(post.id); }}>Delete</button> : null }
+            { canEdit
+              ? <button>
+                <Link
+                  className="menu-button"
+                  to={`/update/${post.id}`}
+                  key={post.id} >
+                  Edit
+                </Link>
+              </button>
+              : null
+            }
+            { canEdit
+              ? <button
+                  onClick={() => { buttonDeletePost(post.id); }}
+                >Delete</button>
+              : null
+            }
           </div>
         );
       });
