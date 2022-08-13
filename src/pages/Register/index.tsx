@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "../../components/Navbar/Navbar";
 import { register } from "../../services";
 const Register = () => {
   const [form, setForm] = React.useState<any>({
@@ -33,39 +34,59 @@ const Register = () => {
 
   return (
     <div>
-      <h1>Register</h1>
-      {/* <form> */}
+      <Navbar />
+      <div className="page-content">
+        <h1>Register</h1>
         <p> {error} </p>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={form.name}
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
-        />
-        <input
-          type="text"
-          placeholder="Email"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={(e) => setForm({ ...form, password: e.target.value })}
-        />
-        <input
-          type="password"
-          placeholder="Password Confirmation"
-          value={form.passwordConfirmation}
-          onChange={(e) => setForm({ ...form, passwordConfirmation: e.target.value })}
-        />
+        <div>
+          <label htmlFor="name">Name</label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            type="text"
+            placeholder="Email"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            value={form.password}
+            onChange={(e) => setForm({ ...form, password: e.target.value })}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="passwordConfirmation">Password Confirmation</label>
+          <input
+            id="passwordConfirmation"
+            type="password"
+            placeholder="Password Confirmation"
+            value={form.passwordConfirmation}
+            onChange={(e) => setForm({ ...form, passwordConfirmation: e.target.value })}
+          />
+        </div>
+
         <button onClick={() => { buttonRegister(); }}>
           Register
         </button>
-      {/* </form> */}
-
+      </div>
     </div>
   );
 }

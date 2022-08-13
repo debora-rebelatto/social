@@ -1,35 +1,42 @@
 import axios from "axios";
 import { BASE_URL } from "../config";
 
+export const buildHeader = () => {
+  return {
+    authorization: `Bearer ${localStorage.getItem("token")}`,
+  };
+}
+
 export async function createPost(body: any) {
-  console.log("createPost", body);
-  return await axios.post(`${BASE_URL}/posts`, body).then((response) => {
-    console.log(response);
+  const headers = buildHeader();
+
+  return await axios.post(`${BASE_URL}/posts`, body, { headers })
+  .then((response) => {
     return response.data;
   }).catch((error) => {
-    console.log(error);
+    return error;
   });
 }
 
 export async function fetchPosts() {
-  return await axios.get(`${BASE_URL}/posts`).then((response) => {
-    console.log(response.data);
+  const headers = buildHeader();
+
+  return await axios.get(`${BASE_URL}/posts`, { headers }).then((response) => {
     return response.data;
   }).catch((error) => {
-    console.log(error);
+    return error;
   });
 }
 
 export async function deletePosts(id: string) {
-  return await axios.delete(`${BASE_URL}/posts/${id}`)
+  const headers = buildHeader();
+
+  return await axios.delete(`${BASE_URL}/posts/${id}`, { headers })
     .then((response) => {
-      console.log(response.data);
       return response.data;
     }).catch((error) => {
-      console.log(error);
-    }).then((response) => {
-      console.log(response);
-    })
+      return error;
+    });
 }
 
 export async function login(body: Object) {
@@ -37,7 +44,7 @@ export async function login(body: Object) {
     .then((response) => {
       return response.data;
     }).catch((error) => {
-      console.log(error);
+      return error;
     })
 }
 

@@ -9,9 +9,27 @@ const PostsList = () => {
   const [page, setPage] = React.useState<number>(1);
   const [totalPages, setTotalPages] = React.useState<number>(1);
 
+  React.useEffect(() => {
+    setLoading(true);
+    fetchPosts().then((data) => {
+      setPosts(data);
+      setTotalPages(data.totalPages);
+      setLoading(false);
+    }).catch((error) => {
+      setPosts([]);
+      setError(error);
+      setLoading(false);
+    });
+  } , [page]);
+
+
   const buttonDeletePost = async (id: string) => {
     const response = await deletePosts(id);
     buttonFetchPosts();
+  }
+
+  const buttonEditPost = async (id: string) => {
+    console.log(id);
   }
 
   const buildList = () => {
@@ -20,9 +38,10 @@ const PostsList = () => {
     } else {
       return posts.map((post: any) => {
         return (
-          <div key={post.id}>
+          <div className="card" key={post.id}>
             <h3>{post.title}</h3>
             <p>{post.content}</p>
+            <button onClick={() => { buttonEditPost(post.id); }}>Edit</button>
             <button onClick={() => { buttonDeletePost(post.id); }}>Delete</button>
           </div>
         );
@@ -37,10 +56,9 @@ const PostsList = () => {
 
   return (
     <div>
-      <h1>Posts List</h1>
+      <h1>Home</h1>
       { loading && <p>Loading...</p> }
       { error && <p>{error.message}</p> }
-      <button onClick={buttonFetchPosts}>GetPosts</button>
       { buildList() }
     </div>
   );

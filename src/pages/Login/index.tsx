@@ -1,9 +1,10 @@
 import React from "react";
+import Navbar from "../../components/Navbar/Navbar";
 import { login } from "../../services";
 
 const Login = () => {
-  const [email, setEmail] = React.useState<String>("");
-  const [password, setPassword] = React.useState<String>("");
+  const [email, setEmail] = React.useState<any>("");
+  const [password, setPassword] = React.useState<any>("");
 
   const buttonLogin = async () => {
     const body = {
@@ -13,20 +14,39 @@ const Login = () => {
 
     const response = await login(body);
     localStorage.setItem("token", response.token);
-    console.log(localStorage.getItem("token"));
+    localStorage.setItem("user_id", response.id);
   }
 
   return (
     <div>
-      <h1>Login</h1>
-      <input type="text" onChange={(e) => setEmail(e.target.value)} />
-      <input
-        type="text"
-        onChange={(e) => setPassword(e.target.value)} />
+      <Navbar />
 
-      <button onClick={() => { buttonLogin(); }}>
-        Login
-      </button>
+      <div className="page-content">
+        <h1>Login</h1>
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Senha</label>
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button onClick={() => { buttonLogin(); }}>
+          Login
+        </button>
+      </div>
 
     </div>
   );
