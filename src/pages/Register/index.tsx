@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import { register } from "../../services";
+import { register } from "../../services/auth";
+
 const Register = () => {
   const [form, setForm] = React.useState<any>({
     name: "",

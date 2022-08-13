@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import { login } from "../../services";
+import { login } from "../../services/auth";
 
 const Login = () => {
   const [email, setEmail] = React.useState<any>("");
@@ -13,7 +13,9 @@ const Login = () => {
     };
 
     const response = await login(body);
+    console.log(response);
     localStorage.setItem("token", response.token);
+    localStorage.setItem("name", response.name);
     localStorage.setItem("user_id", response.id);
   }
 

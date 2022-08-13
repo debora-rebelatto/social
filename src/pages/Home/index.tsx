@@ -1,9 +1,7 @@
 import PostsList from "../../components/PostsList/PostsList";
 import Navbar from "../../components/Navbar/Navbar";
-import CreatePosts from "../CreatePosts";
 
 const Home = () => {
-
   return (
     <div>
       <Navbar />
