@@ -13,10 +13,10 @@ const Login = () => {
     };
 
     const response = await login(body);
-    console.log(response);
-    localStorage.setItem("token", response.token);
-    localStorage.setItem("name", response.name);
-    localStorage.setItem("user_id", response.id);
+    localStorage.setItem("token", response.data.token);
+    localStorage.setItem("name", response.data.name);
+    localStorage.setItem("user_id", response.data.id);
+    window.location.href = "/";
   }
 
   return (

@@ -24,8 +24,8 @@ const Register = () => {
       };
       const response = await register(body);
 
-      if(response.status === 200) {
-        setError("");
+      if(response.status === 201) {
+        setError("User Created!");
       } else {
         setError(response.data);
       }

@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { fetchPosts, deletePosts } from "../../services/posts";
 
 const PostsList = () => {
@@ -14,15 +13,13 @@ const PostsList = () => {
 
   const buttonEditPost = async (id: string) => {
     console.log(id);
+    loadData();
   }
 
-  // load page data
   React.useEffect(() => {
     loadData();
   }, []);
 
-
-  // load data
   const loadData = async () => {
     setLoading(true);
     fetchPosts()
@@ -35,16 +32,28 @@ const PostsList = () => {
       });
   }
 
+  const canEditThisPost = (id: String) => {
+    if (localStorage.getItem("user_id") === id.toString()) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
   const buildList = () => {
     if(Object.keys(posts).length === 0) {
       return <div>No posts found</div>;
     } else {
       return posts.map((post: any) => {
+        const canEdit = canEditThisPost(post.user_id);
         return (
           <div className="card" key={post.id}>
+            <p> {localStorage.getItem("user_id") } </p>
+            <p>{ post.user_id} </p>
             <p>{post.content}</p>
-            <button onClick={() => { buttonEditPost(post.id); }}>Edit</button>
-            <button onClick={() => { buttonDeletePost(post.id); }}>Delete</button>
+            { canEdit ? <button onClick={() => { buttonEditPost(post.id); }}>Edit</button> : null }
+            { canEdit ? <button onClick={() => { buttonDeletePost(post.id); }}>Delete</button> : null }
           </div>
         );
       });
@@ -57,7 +66,6 @@ const PostsList = () => {
       <h1>Home</h1>
       { loading && <p>Loading...</p> }
       { error && <p>{error.message}</p> }
-      {/* { loadPosts() } */}
       { buildList() }
     </div>
   );
