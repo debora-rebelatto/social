@@ -4,7 +4,7 @@
 - [x] Login
 - [x] Listar postagens
 - [x] Criar postagens
-- [ ] Editar postagens
+- [x] Editar postagens
 - [x] Deletar postagens
 
 ### `npm start`
