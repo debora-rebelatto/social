@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "deb",
+    "password": "postgres",
+    "database": "social-media",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "deb",
+    "password": "postgres",
+    "database": "social-media",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "deb",
+    "password": "postgres",
+    "database": "social-media",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
